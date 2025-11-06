@@ -100,10 +100,10 @@ So:
 ### Status, history, and quick helpers
 
 **Check what’s going on**:
-		 git status
+		 'git status'
 
 **View history (short):**
-		git log --oneline
+		'git log --oneline'
 
 **Temporarily stash unfinished work:**
 	Notes:  
