@@ -49,19 +49,19 @@ A **branch** in Git is like a **separate line of work** — a copy of your proje
 Example: You have a project on the main branch that works fine.
 		Now you want to add a new feature — but you don’t want to break the main code.  So you make a new branch:
 
-Creating and switching to new brand
+**Creating and switching to new brand**
 
 		git branch feature/readme-badge   # Create new branch
 		git checkout feature/readme-badge   # switch to new brand
-		`git checkout -b feature/readme-badge`   # create AND switch
+		git checkout -b feature/readme-badge   # create AND switch
 
-**List branches
-		git branch    #  give all branches 
+**List branches**
+		`git branch`    #  give all branches 
 		
-**Why branch?
-		- Experiment freely
-		- Keep `main` stable
-		- Review changes via Pull Requests
+**Why branch?**
+	- Experiment freely
+	- Keep `main` stable
+	- Review changes via Pull Requests
 
 ### Remote basics (origin, upstream)
 
@@ -80,40 +80,34 @@ This one appears **when you fork someone else’s project** on GitHub.
 
 Notes:  A **fork** means making **your own copy** of someone else’s project **on GitHub** (not on your computer yet).  
 It lives **in your GitHub account**, and you can change it freely.
-Let’s say:
+
+   Let’s say:
 - You fork someone’s repo → now you have **your copy (origin)**
 - The original project (the one you forked) is called **upstream**
 So:
 - `origin` → your fork
 - `upstream` → the main/original repository
 
-	original repo (someone else)
-	       ↓   (Fork)
-	your GitHub copy (origin)
-	       ↓   (Clone)
-	your computer (local repo)
-
- Commands 
+**Commands**
 	- `git remote -v`     --> see URLs that this shows which GitHub repositories your local project is connected to
-	- `git remote add origin "your-fork-URL"`     ---> **Connect your own GitHub fork** to your local repo
-	- `git remote add upstream "original-URL"`
-	**Connect the original project (the one you forked from).**our local project also knows where the **main source project** lives — so you can **get updates** from it later.
+	- `git remote add origin your-fork-URL`     ---> **Connect your own GitHub fork** to your local repo
+	- `git remote add upstream original-URL` **Connect the original project (the one you forked from).**our local project also knows where the **main source project** lives — so you can **get updates** from it later.
 	- `git fetch upstream`  -->  This pulls all new commits and branches **from the original repo** but doesn’t change your code yet — it just updates your local info
 	- `git push origin main`    --> **Upload your latest commits** from your computer → to your GitHub fork.
 
 ### Status, history, and quick helpers
 
-**Check what’s going on:
+**Check what’s going on**:
 		 git status
 
-**View history (short):
+**View history (short):**
 		git log --oneline
 
-**Temporarily stash unfinished work:
-	Notes: “Temporarily put away my unfinished work — I’ll come back to it later.”
+**Temporarily stash unfinished work:**
+	Notes:  
+	Temporarily put away my unfinished work — I’ll come back to it later.
 	Example: You’re working on a new feature, you edited some files...  
-			then suddenly your team says:
-> 			“Hey, switch to another branch and fix a quick bug!”
+			then suddenly your team says: Hey, switch to another branch and fix a quick bug!
 			But you can’t switch branches right now — because you have **unsaved (uncommitted)** changes.
 So you use:
 			`git stash`
@@ -139,12 +133,6 @@ So you use:
 	  - Approve or request changes
 	  - Finally, **merge** it into the main project
 	 
-**Open a PR workflow:**
-
-	1. Push your branch: `git push -u origin feature/x`
-	2. On GitHub, click **Compare & pull request**
-	3. Add a clear title and description (what/why/how)
-	4. Request review → address comments → merge
 
 ## When Git can’t auto-merge: conflicts
 
@@ -161,22 +149,28 @@ A **merge conflict** happens when **two branches edit the same lines**. Git need
 Let’s **learn merge strategies (Fast-forward, Squash, and Rebase)** through **hands-on practice** — step by step.
 
 Step 1. Create a small test project
-		`mkdir git-merge-practice`
-		`cd git-merge-practice`
-		`git init`
-		`echo "Hello world" > app.txt`
-		`git add .`
-		`git commit -m "Initial commit"`
+
+		mkdir git-merge-practice
+		cd git-merge-practice
+		git init
+		echo "Hello world" > app.txt
+		git add .
+		git commit -m "Initial commit"
 
 Step 2. Create a new branch
-		`git checkout -b feature`
-		`echo "Feature line 1" >> app.txt`
-		`git add app.txt`
-		`git commit -m "Add feature line 1"`
 
+		''' 
+		git checkout -b feature
+		echo "Feature line 1" >> app.txt
+		git add app.txt
+		git commit -m  <Add feature line 1>
+		'''
 Step 3. **Fast-forward merge**
-		`git checkout main`
-		`git merge feature`
+
+		''' 
+		git checkout main
+		git merge feature 
+		 '''
 
 1. Notes:
 	    - Used when the target branch **hasn’t moved** since your branch diverged.
@@ -185,18 +179,22 @@ Step 3. **Fast-forward merge**
 
 Step 4. **Squash merge**
 	Let’s create a new branch again:
-		`git checkout -b feature2`
-		`echo "line 2" >> app.txt`
-		`git commit -am "Add line 2"`
-		`echo "line 3" >> app.txt`
-		`git commit -am "Add line 3`"
-	Now you have **2 commits** in your branch.
+	
+	'''
+		git checkout -b feature2
+		echo "line 2" >> app.txt
+		git commit -am "Add line 2"
+		echo "line 3" >> app.txt
+		git commit -am "Add line 3"
+	'''
+	
+Now you have **2 commits** in your branch.
+	
 		`git checkout main`
 		`git merge --squash feature2`
 		`git commit -m "Add lines 2 and 3 (squashed)"`
 
-
-	Notes:
+Notes:
 	    - Combines all commits on your branch into **one** before merging.
 	    - **Use when:** you want a clean history (one commit per feature/fix).
 
