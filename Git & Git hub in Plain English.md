@@ -34,14 +34,15 @@ Because it not only downloads files, it also includes **all the history, commits
 	Note: Now Git knows **which files** you want to include in your next snapshot (commit).
 
 
-3. 3. **Repository** — where you _permanently save (commit)_
+3. **Repository** — where you _permanently save (commit)_
 	1. `git commit -m "Added new feature"`
 	Note: Now Git **takes a snapshot** of your staged files and stores them in the repository.
 
-   4. Push to **remote** (GitHub):
+4. Push to **remote** (GitHub):
 	   git push -u origin 'branch'
-   5. Pull updates from remote:
-	    git pull                  
+5. Pull updates from remote:
+	    git pull
+                   
 ### What is Branching?
 
 A **branch** in Git is like a **separate line of work** — a copy of your project where you can make changes **without touching the main version**.
@@ -90,8 +91,9 @@ So:
 
 **Commands**
 	- `git remote -v`     --> see URLs that this shows which GitHub repositories your local project is connected to
+	
 	- `git remote add origin your-fork-URL`     ---> **Connect your own GitHub fork** to your local repo
-	- `git remote add upstream original-URL` **Connect the original project (the one you forked from).**our local project also knows where the **main source project** lives — so you can **get updates** from it later.
+	- `git remote add upstream original-URL` **Connect the original project (the one you forked from).**our local project also knows where the **main source  project** lives — so you can **get updates** from it later.
 	- `git fetch upstream`  -->  This pulls all new commits and branches **from the original repo** but doesn’t change your code yet — it just updates your local info
 	- `git push origin main`    --> **Upload your latest commits** from your computer → to your GitHub fork.
 
@@ -109,7 +111,7 @@ So:
 	Example: You’re working on a new feature, you edited some files...  
 			then suddenly your team says: Hey, switch to another branch and fix a quick bug!
 			But you can’t switch branches right now — because you have **unsaved (uncommitted)** changes.
-So you use:
+ 	So you use:
 			`git stash`
 		`git stash pop`  --> Bring back your hidden changes and continue working
 
