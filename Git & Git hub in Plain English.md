@@ -161,18 +161,16 @@ Step 1. Create a small test project
 
 Step 2. Create a new branch
 
-		''' 
 		git checkout -b feature
 		echo "Feature line 1" >> app.txt
 		git add app.txt
 		git commit -m  <Add feature line 1>
-		'''
+	
 Step 3. **Fast-forward merge**
 
-		''' 
 		git checkout main
 		git merge feature 
-		 '''
+		 
 
 1. Notes:
 	    - Used when the target branch **hasn’t moved** since your branch diverged.
@@ -182,13 +180,13 @@ Step 3. **Fast-forward merge**
 Step 4. **Squash merge**
 	Let’s create a new branch again:
 	
-	'''
+	
 		git checkout -b feature2
 		echo "line 2" >> app.txt
 		git commit -am "Add line 2"
 		echo "line 3" >> app.txt
 		git commit -am "Add line 3"
-	'''
+	
 	
 Now you have **2 commits** in your branch.
 	
